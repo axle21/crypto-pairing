@@ -2,8 +2,8 @@ import Card from "antd/es/card";
 import styled from "styled-components";
 
 export const CardStyled = styled(Card)`
-    
-   
+    min-height:342px;
+
    .section-title{
         font-weight: 700;
         font-size:24px;
@@ -15,6 +15,6 @@ export const CardStyled = styled(Card)`
     .body-section{
         text-align: center;
     }
-   
+
   }
 `;
