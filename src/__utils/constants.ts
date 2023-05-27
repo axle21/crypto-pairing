@@ -1,0 +1,1 @@
+export const API_BASE_URL = "https://api3.binance.com/api/v3"
