@@ -68,6 +68,7 @@ const Form = ({ isDarkMode }: Props) => {
         <Button
           size="large"
           icon={<UndoOutlined />}
+          disabled={baseAsset === '' && quoteAsset === ''}
           onClick={() => saveFormType({ baseAsset: '', quoteAsset: '' })}
         >
           Reset

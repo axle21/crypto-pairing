@@ -17,7 +17,12 @@ const DynamicRow: React.FC<Props> = ({ label, data }: Props) => {
 
   return (
     <Col xs={24} sm={24} md={24} lg={24} xl={12} xxl={12} className="dynamic-row-label">
-      {convertedLabel} : <span className="dynamic-row-data">{convertedData}</span>
+      <div className="container">
+        <div className="item">
+          <span className="key"> {convertedLabel} : </span>
+          <span className="value">{convertedData}</span>
+        </div>
+      </div>
     </Col>
   );
 };
