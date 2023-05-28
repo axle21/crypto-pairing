@@ -16,6 +16,6 @@ Make sure you have Node.js installed on your machine. You can download it from t
 
    ```shell
    npm install
-4. run the dev and wait for the localhost it will provide : usually its on port 5173
+4. run the dev and wait :  Local:   http://127.0.0.1:5173/
    ```shell
    npm run dev
