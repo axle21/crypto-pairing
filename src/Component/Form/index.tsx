@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Button, Col, Select } from 'antd';
 import { ArrowRightOutlined, UndoOutlined } from '@ant-design/icons';
 import { ExchangeInfoType } from '../../__utils/types';
@@ -16,7 +16,7 @@ const Form = ({ isDarkMode }: Props) => {
   const { symbols, formData, saveFormType, saveSymbols } = useGetExchange();
   const { baseAsset, quoteAsset } = formData;
 
-  useEffect(() => {
+  React.useEffect(() => {
     (async () => {
       try {
         const response: AxiosResponse<ExchangeInfoType> = await axios.get(`${API_BASE_URL}/exchangeInfo`);

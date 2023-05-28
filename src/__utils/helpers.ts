@@ -1,6 +1,11 @@
-import { SymbolTypes, SymbolType, ObjectType } from './types';
+import { SymbolTypes, ObjectType } from './types';
 
-
+/**
+ * filter and format to map QUOTE
+ * @param baseAsset - string
+ * @param symbols - array of symbols
+ * @returns {string[]}
+ */
 export const getQuoteAssetsList = (symbols: SymbolTypes , baseAsset:string) => {
   if (baseAsset === '') {
     return [...new Set(symbols.map(symbol => symbol.quoteAsset))];
@@ -11,7 +16,8 @@ export const getQuoteAssetsList = (symbols: SymbolTypes , baseAsset:string) => {
 }
 
 /**
- * filter and format to symbols
+ * filter and format to map BASE
+ * @quoteAsset baseAsset - string
  * @param symbols - array of symbols
  * @returns {string[]}
  */
