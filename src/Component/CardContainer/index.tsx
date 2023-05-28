@@ -64,6 +64,8 @@ const CardContainer = () => {
               console.error('Error:', error.data);
               setCardData({ ...cardDataDefaultValue, isError: true });
             });
+        } else {
+          setCardData({ ...cardDataDefaultValue });
         }
       }, [baseAsset, quoteAsset]);
 

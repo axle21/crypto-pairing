@@ -1,26 +1,29 @@
 import { SymbolTypes, SymbolType, ObjectType } from './types';
 
+
+export const getQuoteAssetsList = (symbols: SymbolTypes , baseAsset:string) => {
+  if (baseAsset === '') {
+    return [...new Set(symbols.map(symbol => symbol.quoteAsset))];
+  } else {
+    const filteredSymbols = symbols.filter(symbol => symbol.baseAsset === baseAsset);
+    return [...new Set(filteredSymbols.map(symbol => symbol.quoteAsset))];
+  }
+}
+
 /**
  * filter and format to symbols
  * @param symbols - array of symbols
  * @returns {string[]}
  */
-export const getListOfSymbols = (symbols: SymbolTypes): string[] => {
-  const mergedData: string[] = [];
-  const uniqueData: string[] = [];
+export const getBaseAssetsList = (symbols: SymbolTypes , quoteAsset:string) => {
+  if (quoteAsset === '') {
+    return [...new Set(symbols.map(symbol => symbol.baseAsset))];
+  } else {
+    const filteredSymbols = symbols.filter(symbol => symbol.quoteAsset === quoteAsset);
+    return [...new Set(filteredSymbols.map(symbol => symbol.baseAsset))];
+  }
+}
 
-  symbols.forEach((asset: SymbolType) => {
-    mergedData.push(asset.quoteAsset, asset.baseAsset);
-  });
-
-  mergedData.forEach((value) => {
-    if (!uniqueData.includes(value)) {
-      uniqueData.push(value);
-    }
-  });
-
-  return uniqueData.sort();
-};
 
 /**
  * Convert number to a time format

@@ -1,19 +1,20 @@
-import { useEffect } from 'react';
-import { Select } from 'antd';
-import { ArrowRightOutlined } from '@ant-design/icons';
+import React, { useEffect } from 'react';
+import { Button, Col, Select } from 'antd';
+import { ArrowRightOutlined, UndoOutlined } from '@ant-design/icons';
 import { ExchangeInfoType } from '../../__utils/types';
-import { getListOfSymbols } from '../../__utils/helpers';
+import { getBaseAssetsList, getQuoteAssetsList } from '../../__utils/helpers';
 import axios, { AxiosResponse } from 'axios';
 import { API_BASE_URL } from '../../__utils/constants';
 import { useGetExchange } from '../../store';
 import { FormContainer } from './style';
 
 type Props = {
-    isDarkMode:boolean
-}
+  isDarkMode: boolean;
+};
 
-const Form = ({isDarkMode}: Props) => {
+const Form = ({ isDarkMode }: Props) => {
   const { symbols, formData, saveFormType, saveSymbols } = useGetExchange();
+  const { baseAsset, quoteAsset } = formData;
 
   useEffect(() => {
     (async () => {
@@ -27,38 +28,51 @@ const Form = ({isDarkMode}: Props) => {
   }, [saveSymbols]);
 
   return (
-    <FormContainer isDarkMode={isDarkMode}>
-      <Select
-        size="large"
-        placeholder="Select Crypto"
-        style={{ width: 200 }}
-        disabled={!symbols}
-        onChange={_symbol => saveFormType({ ...formData, baseAsset: _symbol })}
-        showSearch
-      >
-        {getListOfSymbols(symbols)?.map((symbol: string, idx: number) => (
-          <Select.Option value={symbol} key={idx} className="select-option">
-            {symbol}
-          </Select.Option>
-        ))}
-      </Select>
+    <FormContainer isDarkMode={isDarkMode} gutter={[16, 16]}>
+      <Col span={24}>
+        <Select
+          size="large"
+          placeholder="Select Crypto"
+          style={{ width: 200 }}
+          disabled={!symbols}
+          value={baseAsset ? baseAsset : null}
+          onChange={_symbol => saveFormType({ ...formData, baseAsset: _symbol })}
+          showSearch
+        >
+          {getBaseAssetsList(symbols, quoteAsset)?.map((symbol: string, idx: number) => (
+            <Select.Option value={symbol} key={idx} className="select-option">
+              {symbol}
+            </Select.Option>
+          ))}
+        </Select>
 
-      <ArrowRightOutlined className="arrow-icon" />
+        <ArrowRightOutlined className="arrow-icon" />
 
-      <Select
-        size="large"
-        placeholder="Select Crypto"
-        style={{ width: 200 }}
-        disabled={!symbols}
-        onChange={_symbol => saveFormType({ ...formData, quoteAsset: _symbol })}
-        showSearch
-      >
-        {getListOfSymbols(symbols)?.map((symbol: string, idx: number) => (
-          <Select.Option value={symbol} key={idx} className="select-option">
-            {symbol}
-          </Select.Option>
-        ))}
-      </Select>
+        <Select
+          size="large"
+          placeholder="Select Crypto"
+          style={{ width: 200 }}
+          disabled={!symbols}
+          value={quoteAsset ? quoteAsset : null}
+          onChange={_symbol => saveFormType({ ...formData, quoteAsset: _symbol })}
+          showSearch
+        >
+          {getQuoteAssetsList(symbols, baseAsset)?.map((symbol: string, idx: number) => (
+            <Select.Option value={symbol} key={idx} className="select-option">
+              {symbol}
+            </Select.Option>
+          ))}
+        </Select>
+      </Col>
+      <Col span={24}>
+        <Button
+          size="large"
+          icon={<UndoOutlined />}
+          onClick={() => saveFormType({ baseAsset: '', quoteAsset: '' })}
+        >
+          Reset
+        </Button>
+      </Col>
     </FormContainer>
   );
 };
