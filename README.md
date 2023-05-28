@@ -19,3 +19,6 @@ Make sure you have Node.js installed on your machine. You can download it from t
 4. run the dev and wait :  Local:   http://127.0.0.1:5173/
    ```shell
    npm run dev
+   
+### LIVE DEMO 
+https://flowdesk-binance-tech-exam-rn2us8zqt-axle21.vercel.app/
