@@ -33,7 +33,7 @@ const Form = ({ isDarkMode }: Props) => {
         <Select
           size="large"
           placeholder="Select Crypto"
-          style={{ width: 200 }}
+         
           disabled={!symbols}
           value={baseAsset ? baseAsset : null}
           onChange={_symbol => saveFormType({ ...formData, baseAsset: _symbol })}
@@ -51,7 +51,7 @@ const Form = ({ isDarkMode }: Props) => {
         <Select
           size="large"
           placeholder="Select Crypto"
-          style={{ width: 200 }}
+        
           disabled={!symbols}
           value={quoteAsset ? quoteAsset : null}
           onChange={_symbol => saveFormType({ ...formData, quoteAsset: _symbol })}

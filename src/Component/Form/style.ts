@@ -7,6 +7,10 @@ export const FormContainer = styled(Row)<{ isDarkMode: boolean }>`
     align-items: center;
     justify-content: center;
     width: 100%;
+
+    .ant-select{
+      width:200px
+    }
   }
 
 
@@ -14,4 +18,12 @@ export const FormContainer = styled(Row)<{ isDarkMode: boolean }>`
     padding: 0 5%;
     color:${(p) => p.isDarkMode && 'white' } ;
   }
+
+  @media (max-width: 768px) {
+
+
+    .ant-col .ant-select{
+      width:150px
+    }
+ }
 `;
