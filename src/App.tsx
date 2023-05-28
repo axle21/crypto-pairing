@@ -1,40 +1,36 @@
-import React from 'react'
-import { ConfigProvider,theme, Button, Card, Space } from "antd";
+import React, { useState } from 'react';
+import { ConfigProvider, theme, Button } from 'antd';
 import { GlobalStyle } from './__utils/global';
-import Form from './Component/Form'
-import Layout from './__layout/Layout'
-import { SymbolTypes } from './__utils/types'
+import Form from './Component/Form';
+import Layout from './__common/Layout';
 import CardContainer from './Component/CardContainer';
+import Header from './Component/Header';
+import Footer from './Component/Footer'
 
+const { defaultAlgorithm, darkAlgorithm } = theme;
 
-function App() {
-  const { defaultAlgorithm, darkAlgorithm } = theme;
-  const [isDarkMode, setIsDarkMode] = React.useState(false);
+const App = () => {
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
-
-  const handleClick = () => {
-    setIsDarkMode((previousValue) => !previousValue);
+  const handleClickDarkMode = () => {
+    setIsDarkMode((prevMode) => !prevMode);
   };
 
+  return (
+    <ConfigProvider
+      theme={{
+        algorithm: isDarkMode ? darkAlgorithm : defaultAlgorithm,
+      }}
+    >
+      <GlobalStyle isDarkMode={isDarkMode} />
+      <Header isDarkMode={isDarkMode} handleClickDarkMode={handleClickDarkMode} />
+      <Layout style={{ background: isDarkMode ? '#1e1e1e' : '' }}>
+        <Form isDarkMode={isDarkMode}/>
+        <CardContainer />
+      </Layout>
+      <Footer isDarkMode={isDarkMode}/>
+    </ConfigProvider>
+  );
+};
 
-    return (
-      <ConfigProvider
-        theme={{
-          algorithm: isDarkMode ? darkAlgorithm : defaultAlgorithm,
-        }}>
-          <GlobalStyle />
-          <Layout>
-            <Form />
-            <CardContainer/>
-            {/* <Card  style={{minHeight:"45vh" ,width:"100%"}}>
-            <Button onClick={handleClick} >
-                  Change Theme to {isDarkMode ? "Light" : "Dark"}
-            </Button>
-            </Card> */}
-          </Layout>
-
-      </ConfigProvider>
-    );
-}
-
-export default App
+export default App;

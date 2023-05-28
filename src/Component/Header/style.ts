@@ -1,12 +1,25 @@
 import styled from "styled-components";
+import { Layout } from 'antd';
 
-export const Wrapper = styled.div`
-	padding: 25px;
-	position: relative;
+const { Header } = Layout;
 
-	.ant-card {
-		border: none;
-		background-color: #fff;
-		box-shadow: 2px 2px 6px 2px rgba(0, 0, 0, 0.05);
-	}
+export const HeaderWrapper = styled(Header)<{ backgroundColor: string }>`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: ${(p) => p.backgroundColor};
+  padding: 0 25px;
+  height: 60px;
+
+  .logo-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    p {
+      margin: 8px;
+      font-weight: 700;
+      font-size: 16px;
+    }
+  }
 `;

@@ -1,89 +1,86 @@
-import React from 'react'
-import {CardStyled} from './style'
-import { Table ,Col,Row,Checkbox } from 'antd'
+import React from 'react';
+import { CardStyled } from './style';
+import { Table, Col, Row, Checkbox } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
-import {RecentTradeType} from '../../../__utils/types'
-import {formatTimestamp} from '../../../__utils/helpers'
-//recentTrade
+import { RecentTradeType } from '../types';
+import { formatTimestamp } from '../../../__utils/helpers';
 
-
-const columns: ColumnsType<RecentTradeType>= [
+const columns: ColumnsType<RecentTradeType> = [
   {
     title: 'Id',
     dataIndex: 'id',
-    width:100
-
+    width: 100,
   },
   {
     title: 'Price',
     dataIndex: 'price',
-    width:200,
-    sorter: (a: RecentTradeType, b: RecentTradeType) => a.price.localeCompare(b.price),
-		render: (price: string, _: any) => <>{price}</>,
+    width: 200,
+    sorter: (a, b) => a.price.localeCompare(b.price),
+    render: (price) => <>{price}</>,
   },
   {
     title: 'Quantity',
     dataIndex: 'qty',
-    width:200,
-    sorter: (a: RecentTradeType, b: RecentTradeType) => a.qty.localeCompare(b.qty),
-		render: (qty: string, _: any) => <>{qty}</>,
+    width: 200,
+    sorter: (a, b) => a.qty.localeCompare(b.qty),
+    render: (qty) => <>{qty}</>,
   },
   {
     title: 'Quote Qty',
     dataIndex: 'quoteQty',
-    width:200,
-    sorter: (a: RecentTradeType, b: RecentTradeType) => a.quoteQty.localeCompare(b.quoteQty),
-		render: (quoteQty: string, _: any) => <>{quoteQty}</>,
+    width: 200,
+    sorter: (a, b) => a.quoteQty.localeCompare(b.quoteQty),
+    render: (quoteQty) => <>{quoteQty}</>,
   },
   {
     title: 'Time',
     dataIndex: 'time',
-    width:150,
-    sorter: (a: RecentTradeType, b: RecentTradeType) => a.time - b.time,
-		render: (time: string, _: any) => <>{formatTimestamp(time)}</>,
+    width: 150,
+    sorter: (a, b) => a.time - b.time,
+    render: (time) => <>{formatTimestamp(time)}</>,
   },
   {
     title: 'isBuyerMaker',
     dataIndex: 'isBuyerMaker',
-    width:120,
-    render: (isBuyerMaker: boolean, _: any) => <div className='checkbox-container'><Checkbox checked={isBuyerMaker}/></div>,
+    width: 120,
+    render: (isBuyerMaker) => (
+      <div className='checkbox-container'>
+        <Checkbox checked={isBuyerMaker} />
+      </div>
+    ),
   },
   {
     title: 'isBestMatch',
     dataIndex: 'isBestMatch',
-    width:120,
-    render: (isBestMatch: boolean, _: any) => <div className='checkbox-container'><Checkbox checked={isBestMatch}/></div>,
+    width: 120,
+    render: (isBestMatch) => (
+      <div className='checkbox-container'>
+        <Checkbox checked={isBestMatch} />
+      </div>
+    ),
   },
-
 ];
 
 type Props = {
-    recentTrade : Array<RecentTradeType> | undefined
-}
+  recentTrade: Array<RecentTradeType>;
+  isLoading: boolean;
+};
 
-const RecentsTrades = ({recentTrade} :  Props) => {
-
-  return (
-    <CardStyled >
-        <Row>
-            <Col span={24}>
-                <Row className="header-section">
-                    <Col span={24} className='section-title'>
-                        Ticker
-                    </Col>
-                </Row>
-                <Row className="body-section">
-                    {
-                        recentTrade && <Table columns={columns} dataSource={recentTrade} pagination={{ pageSize: 50 }} scroll={{ y: 240 }} />
-                    }
-
-                </Row>
-            </Col>
+const RecentsTrades: React.FC<Props> = ({ recentTrade, isLoading }) => (
+  <CardStyled>
+    <Row>
+      <Col span={24}>
+        <Row className="header-section">
+          <Col span={24} className='section-title'>
+            Recents Trade
+          </Col>
         </Row>
-	</CardStyled>
-  )
-}
+        <Row className="body-section">
+          <Table columns={columns} dataSource={recentTrade} pagination={{ pageSize: 50 }} scroll={{ y: 250 }} loading={isLoading} />
+        </Row>
+      </Col>
+    </Row>
+  </CardStyled>
+);
 
-export default RecentsTrades
-
-
+export default RecentsTrades;

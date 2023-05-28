@@ -1,5 +1,5 @@
 import {SymbolTypes,FormType} from './__utils/types'
-import create from 'zustand';
+import {create} from 'zustand';
 
 type CounterState = {
   symbols: SymbolTypes;

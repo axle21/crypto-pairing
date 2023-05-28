@@ -8,9 +8,7 @@ export const ContentStyled = styled(Content)`
     flex-direction:column;
     justify-content: center;
     align-items:center;
-	min-height: 100vh;
-	width: 100vw;
-    background: pink;
+	min-height: calc(100vh - 107px);
     padding: 25px;
 
 	.back-top {

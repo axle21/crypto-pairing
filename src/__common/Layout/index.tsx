@@ -1,6 +1,8 @@
-import BackTop from "antd/es/back-top";
+import FloatButton from "antd/es/float-button";
 import React from "react";
 import { ContentStyled } from "./style";
+
+const {BackTop} = FloatButton
 
 type Props = {
 	children: React.ReactNode;
