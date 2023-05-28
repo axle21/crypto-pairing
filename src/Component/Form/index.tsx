@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { Select } from 'antd';
 import { ArrowRightOutlined } from '@ant-design/icons';
 import { ExchangeInfoType } from '../../__utils/types';

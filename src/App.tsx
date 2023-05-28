@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { ConfigProvider, theme, Button } from 'antd';
+import  { useState } from 'react';
+import { ConfigProvider, theme } from 'antd';
 import { GlobalStyle } from './__utils/global';
 import Form from './Component/Form';
 import Layout from './__common/Layout';
