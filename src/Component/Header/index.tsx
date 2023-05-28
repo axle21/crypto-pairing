@@ -1,4 +1,3 @@
-import React from 'react';
 import { HeaderWrapper } from './style';
 import { BsSunFill, BsMoon } from 'react-icons/bs';
 import { Button } from 'antd';
