@@ -14,7 +14,7 @@ const TwentyFourTicker = ({ twentyFourTicker }: Props) => (
       <Col span={24}>
         <Row className="header-section">
           <Col span={24} className="section-title">
-            24h ticker
+            24h Ticker
           </Col>
         </Row>
         <Row className="body-section">

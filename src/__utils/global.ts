@@ -21,4 +21,8 @@ export const GlobalStyle = createGlobalStyle<any>`
   .body-section svg {
     fill: ${(p) => p.isDarkMode ? 'white' : 'black'};
   }
+
+  .ant-result{
+    padding:0;
+  }
 `;

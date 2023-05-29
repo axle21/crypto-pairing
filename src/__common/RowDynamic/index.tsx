@@ -5,7 +5,7 @@ import { formatTimestamp } from '../../__utils/helpers';
 interface Props {
   label: string;
   data: number | string | undefined;
-};
+}
 
 const DynamicRow: React.FC<Props> = ({ label, data }: Props) => {
   const convertedLabel = label
