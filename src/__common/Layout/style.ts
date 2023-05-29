@@ -15,7 +15,7 @@ export const ContentStyled: React.FC<ContentStyledTypes> = styled(Content)<Conte
     align-items:center;
 	min-height: calc(100vh - 107px);
     padding: 25px;
-	border-radius: ${(p) => p.isDarkMode ? '#1e1e1e' : ''};
+	background: ${(p) => p.isDarkMode ? '#1e1e1e' : ''};
 
 	.back-top {
 		height: 40px;
