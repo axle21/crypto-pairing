@@ -1,7 +1,14 @@
 import styled from "styled-components";
-import _Col from "antd/es/col";
+import Col from "antd/es/col";
 
-export const Col = styled(_Col)`
+
+interface RowDynamicContainerTypes {
+  children: React.ReactNode;
+}
+
+
+export const RowDynamicContainer: React.FC<RowDynamicContainerTypes | React.ComponentProps<typeof Col>> =styled(Col)<RowDynamicContainerTypes | React.ComponentProps<typeof Col>>`
+
   font-weight: 700;
 
   span {

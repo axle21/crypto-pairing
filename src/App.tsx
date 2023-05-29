@@ -24,9 +24,9 @@ const App = () => {
     >
       <GlobalStyle isDarkMode={isDarkMode} />
       <Header isDarkMode={isDarkMode} handleClickDarkMode={handleClickDarkMode} />
-      <Layout style={{ background: isDarkMode ? '#1e1e1e' : '' }}>
+      <Layout isDarkMode={isDarkMode}>
         <Form isDarkMode={isDarkMode}/>
-        <CardContainer />
+        <CardContainer/>
       </Layout>
       <Footer isDarkMode={isDarkMode}/>
     </ConfigProvider>

@@ -7,11 +7,11 @@ const {BackTop} = FloatButton
 interface Props {
 	children: React.ReactNode;
 	withBackTop?: boolean;
-	style?: { [key: string]: string };
-};
+	isDarkMode:boolean;
+}
 
-const AppContent: React.FC<Props> = ({ children, style, withBackTop = true }: Props) => (
-	<ContentStyled style={{ ...style }}>
+const AppContent: React.FC<Props> = ({ children, isDarkMode, withBackTop = true }: Props) => (
+	<ContentStyled isDarkMode={isDarkMode}>
 		{children}
 		{withBackTop && (
 			<BackTop>

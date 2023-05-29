@@ -1,5 +1,5 @@
 import React from "react";
-import { Col } from './style';
+import { RowDynamicContainer } from './style';
 import { formatTimestamp } from '../../__utils/helpers';
 
 interface Props {
@@ -16,14 +16,14 @@ const DynamicRow: React.FC<Props> = ({ label, data }: Props) => {
   const convertedData = convertedLabel.toLowerCase().includes("time") ? formatTimestamp(data as string) : data;
 
   return (
-    <Col xs={24} sm={24} md={24} lg={24} xl={12} xxl={12} className="dynamic-row-label">
+    <RowDynamicContainer xs={24} sm={24} md={24} lg={24} xl={12} xxl={12}>
       <div className="container">
         <div className="item">
           <span className="key"> {convertedLabel} : </span>
           <span className="value">{convertedData}</span>
         </div>
       </div>
-    </Col>
+    </RowDynamicContainer>
   );
 };
 
