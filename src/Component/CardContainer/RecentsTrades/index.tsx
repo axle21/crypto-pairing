@@ -35,7 +35,7 @@ const columns: ColumnsType<RecentTradeType> = [
   {
     title: "Time",
     dataIndex: "time",
-    width: 150,
+    width: 120,
     sorter: (a, b) => a.time - b.time,
     render: (time) => <>{formatTimestamp(time)}</>,
   },
@@ -76,10 +76,11 @@ const RecentsTrades: React.FC<Props> = ({ recentTrade }) => (
         </Row>
         <Row className="body-section">
           <Table
+            rowKey="id"
             columns={columns}
             dataSource={recentTrade}
             pagination={{ pageSize: 50 }}
-            scroll={{ y: 250 }}
+            scroll={{ y: 300 }}
           />
         </Row>
       </Col>

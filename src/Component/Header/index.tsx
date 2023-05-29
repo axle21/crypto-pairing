@@ -9,7 +9,7 @@ interface Props {
 }
 
 const Header = ({ isDarkMode, handleClickDarkMode }: Props) => {
-  const [showShadow, setShowShadow] = React.useState(false);
+  const [showShadow, setShowShadow] = React.useState<boolean>(false);
 
   React.useEffect(() => {
     const handleScroll = () => {

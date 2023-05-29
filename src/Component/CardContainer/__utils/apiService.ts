@@ -7,9 +7,7 @@ export const getPublicMarketApi = async (
 ): Promise<AxiosResponse<any>> => {
   const dataParam = baseAsset + quoteAsset;
   const tickerPromise = axios.get(`${API_BASE_URL}/ticker?symbol=${dataParam}`);
-  const ticker24Promise = axios.get(
-    `${API_BASE_URL}/ticker/24hr?symbol=${dataParam}`
-  );
+  const ticker24Promise = axios.get(`${API_BASE_URL}/ticker/24hr?symbol=${dataParam}`);
   const tradesPromise = axios.get(`${API_BASE_URL}/trades?symbol=${dataParam}`);
 
   try {

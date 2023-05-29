@@ -1,6 +1,11 @@
 import styled from "styled-components";
 
-export const CardContainerWrapper = styled.div`
+
+interface CardContainerWrapperTypes {
+  children: React.ReactNode;
+}
+
+export const CardContainerWrapper: React.FC<CardContainerWrapperTypes> = styled.div<CardContainerWrapperTypes>`
   width: 100%;
   margin: 25px 0;
   min-height: calc(100vh - 311px);

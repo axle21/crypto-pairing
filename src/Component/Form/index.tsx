@@ -28,6 +28,7 @@ const Form_ = ({ isDarkMode }: Props) => {
   const [form] = Form.useForm();
   const { data, saveData } = useGetExchangeData();
   const { data:publicMarketData,saveData: publicMarketSaveData } = useGetPublicMarketData();
+  const {isLoading :gettingPublicMarket} = publicMarketData
   const { symbols } = data.data;
   const [formData, setFormData] = React.useState<FormType>(defaultFormData);
   const { baseAsset, quoteAsset } = formData;
@@ -145,7 +146,7 @@ const Form_ = ({ isDarkMode }: Props) => {
             <Button
               size="large"
               icon={<UndoOutlined />}
-              disabled={isIdenticalObject(getPublicMarketDataDefaultValue,publicMarketData)}
+              disabled={isIdenticalObject(getPublicMarketDataDefaultValue,publicMarketData) || gettingPublicMarket}
               onClick={handleOnClickReset}
             >
               Reset
@@ -153,7 +154,7 @@ const Form_ = ({ isDarkMode }: Props) => {
             <Button
               size="large"
               icon={<EyeOutlined />}
-              disabled={baseAsset === "" || quoteAsset === ""}
+              disabled={baseAsset === "" || quoteAsset === "" || gettingPublicMarket}
               htmlType="submit"
             >
               Query

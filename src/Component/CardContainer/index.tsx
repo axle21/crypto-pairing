@@ -14,7 +14,7 @@ const CardContainer = () => {
     return (
       <CardContainerWrapper>
         <Row gutter={[16, 16]}>
-          <Col xs={24} xl={12} xxl={12}>
+          <Col xs={24} xl={12} xxl={12} >
             <Ticker ticker={ticker} />
           </Col>
           <Col xs={24} xl={12} xxl={12}>

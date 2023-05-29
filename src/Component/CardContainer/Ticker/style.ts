@@ -1,7 +1,11 @@
 import Card from "antd/es/card";
 import styled from "styled-components";
 
-export const CardStyled = styled(Card)`
+interface CardStyledTypes {
+   children: React.ReactNode;
+ }
+ 
+ export const CardStyled: React.FC<CardStyledTypes> = styled(Card)<CardStyledTypes>`
    min-height: 342px;
    
    .section-title {

@@ -1,7 +1,12 @@
 import styled from "styled-components";
 import Row from 'antd/es/row'
- 
-export const FormContainer = styled(Row)<{ isDarkMode: boolean }>`
+
+interface FormContainerTypes {
+  isDarkMode: boolean;
+  children: React.ReactNode;
+}
+
+export const FormContainer: React.FC<FormContainerTypes> = styled(Row)<FormContainerTypes>`
   .ant-col{
     display: flex;
     align-items: center;
@@ -26,5 +31,5 @@ export const FormContainer = styled(Row)<{ isDarkMode: boolean }>`
     .ant-col .ant-select{
       width:150px
     }
- }
+ } 
 `;
