@@ -16,7 +16,8 @@ export const FormContainer = styled(Row)<{ isDarkMode: boolean }>`
 
   .arrow-icon {
     padding: 0 5%;
-    color:${(p) => p.isDarkMode && 'white' } ;
+    color:${(p) => p.isDarkMode && 'white' };
+    padding-bottom: 25px;
   }
 
   @media (max-width: 768px) {

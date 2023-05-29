@@ -1,38 +1,4 @@
-import { SymbolTypes, ObjectType } from './types';
-
-/** 
- * filter and format to map QUOTE also sort
- * @param baseAsset - string
- * @param symbols - array of symbols
- * @returns {string[]}
- */
-export const getQuoteAssetsList = (symbols: SymbolTypes, baseAsset: string) => {
-  if (baseAsset === '') {
-    const quoteAssets = [...new Set(symbols.map(symbol => symbol.quoteAsset))];
-    return quoteAssets.sort();
-  } else {
-    const filteredSymbols = symbols.filter(symbol => symbol.baseAsset === baseAsset);
-    const quoteAssets = [...new Set(filteredSymbols.map(symbol => symbol.quoteAsset))];
-    return quoteAssets.sort();
-  }
-};
-
-/**
- * filter and format to map BASE also sort
- * @quoteAsset baseAsset - string
- * @param symbols - array of symbols
- * @returns {string[]}
- */
-export const getBaseAssetsList = (symbols: SymbolTypes, quoteAsset: string) => {
-  if (quoteAsset === '') {
-    const baseAssets = [...new Set(symbols.map(symbol => symbol.baseAsset))];
-    return baseAssets.sort();
-  } else {
-    const filteredSymbols = symbols.filter(symbol => symbol.quoteAsset === quoteAsset);
-    const baseAssets = [...new Set(filteredSymbols.map(symbol => symbol.baseAsset))];
-    return baseAssets.sort();
-  }
-};
+import { ObjectType } from "./types";
 
 /**
  * Convert number to a time format
@@ -57,7 +23,10 @@ export const formatTimestamp = (timestamp: string): string => {
  * @param obj2 - object
  * @returns {boolean}
  */
-export const isIdenticalObject = (obj1: ObjectType, obj2: ObjectType): boolean => {
+export const isIdenticalObject = (
+  obj1: ObjectType,
+  obj2: ObjectType
+): boolean => {
   const keys1 = Object.keys(obj1);
   const keys2 = Object.keys(obj2);
 

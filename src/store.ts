@@ -1,16 +1,31 @@
-import {SymbolTypes,FormType} from './__utils/types'
-import {create} from 'zustand';
+import {
+  getExchangeInfoDataDefaultValue,
+  getExchangeInfoDataTypes,
+} from "./Component/Form/__utils/types";
+import {
+  getPublicMarketDataDefaultValue,
+  getPublicMarketDataTypes,
+} from "./Component/CardContainer/__utils/types";
+import { create } from "zustand";
 
-type CounterState = {
-  symbols: SymbolTypes;
-  formData: FormType;
-  saveSymbols: (data:SymbolTypes) => void;
-  saveFormType : (data:FormType) => void;
+type useGetExchangeDataType = {
+  data: getExchangeInfoDataTypes;
+  saveData: (data: getExchangeInfoDataTypes) => void;
 };
 
-export const useGetExchange = create<CounterState>((set) => ({
-    symbols: [],
-    formData: {baseAsset:'',quoteAsset:''},
-    saveSymbols: (data: SymbolTypes) => set({ symbols :data }),
-    saveFormType: (data: FormType) => set({ formData : data }),
+export const useGetExchangeData = create<useGetExchangeDataType>((set) => ({
+  data: getExchangeInfoDataDefaultValue,
+  saveData: (data: getExchangeInfoDataTypes) => set({ data }),
 }));
+
+type useGetPublicMarketDataType = {
+  data: getPublicMarketDataTypes;
+  saveData: (data: getPublicMarketDataTypes) => void;
+};
+
+export const useGetPublicMarketData = create<useGetPublicMarketDataType>(
+  (set) => ({
+    data: getPublicMarketDataDefaultValue,
+    saveData: (data: getPublicMarketDataTypes) => set({ data }),
+  })
+);
