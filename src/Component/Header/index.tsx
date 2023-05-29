@@ -2,10 +2,10 @@ import { HeaderWrapper } from './style';
 import { BsSunFill, BsMoon } from 'react-icons/bs';
 import { Button } from 'antd';
 
-type Props = {
+interface Props {
   isDarkMode: boolean;
   handleClickDarkMode: () => void;
-};
+}
 
 const Header = ({ isDarkMode, handleClickDarkMode }: Props) => (
   <HeaderWrapper backgroundColor={!isDarkMode ? 'white' : '#141414'}>

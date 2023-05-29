@@ -4,7 +4,7 @@ import { ContentStyled } from "./style";
 
 const {BackTop} = FloatButton
 
-type Props = {
+interface Props {
 	children: React.ReactNode;
 	withBackTop?: boolean;
 	style?: { [key: string]: string };

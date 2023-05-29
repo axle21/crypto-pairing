@@ -1,8 +1,8 @@
 import { FooterWrapper } from './style';
 
-type Props = {
+interface Props {
   isDarkMode: boolean;
-};
+}
 
 const Footer = ({ isDarkMode }: Props) => (
   <FooterWrapper backgroundColor={!isDarkMode ? 'white' : '#141414'}>

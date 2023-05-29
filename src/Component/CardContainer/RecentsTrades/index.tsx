@@ -61,9 +61,9 @@ const columns: ColumnsType<RecentTradeType> = [
   },
 ];
 
-type Props = {
+interface Props {
   recentTrade: Array<RecentTradeType>;
-};
+}
 
 const RecentsTrades: React.FC<Props> = ({ recentTrade }) => (
   <CardStyled>

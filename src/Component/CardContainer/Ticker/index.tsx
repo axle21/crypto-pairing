@@ -3,9 +3,9 @@ import { Row, Col } from "antd";
 import DynamicForm from "../../../__common/RowDynamic";
 import { TickerType } from "../__utils/types";
 
-type Props = {
+interface Props {
   ticker: TickerType;
-};
+}
 
 const Ticker = ({ ticker }: Props) => (
   <CardStyled>

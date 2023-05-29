@@ -4,9 +4,9 @@ import { CardStyled } from "./style";
 import { Row, Col } from "antd";
 import DynamicForm from "../../../__common/RowDynamic";
 
-type Props = {
+interface Props {
   twentyFourTicker: TwentyFourTickerType;
-};
+}
 
 const TwentyFourTicker = ({ twentyFourTicker }: Props) => (
   <CardStyled>

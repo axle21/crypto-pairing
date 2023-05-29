@@ -20,9 +20,9 @@ const callPublicMarket = async (baseAsset: string, quoteAsset: string) => {
   return res;
 };
 
-type Props = {
+interface Props {
   isDarkMode: boolean;
-};
+}
 
 const Form_ = ({ isDarkMode }: Props) => {
   const [form] = Form.useForm();

@@ -2,7 +2,7 @@ import React from "react";
 import { Col } from './style';
 import { formatTimestamp } from '../../__utils/helpers';
 
-type Props = {
+interface Props {
   label: string;
   data: number | string | undefined;
 };
