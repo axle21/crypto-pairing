@@ -27,7 +27,7 @@ interface Props {
 const Form_ = ({ isDarkMode }: Props) => {
   const [form] = Form.useForm();
   const { data, saveData } = useGetExchangeData();
-  const { saveData: publicMarketSaveData } = useGetPublicMarketData();
+  const { data:publicMarketData,saveData: publicMarketSaveData } = useGetPublicMarketData();
   const { symbols } = data.data;
   const [formData, setFormData] = React.useState<FormType>(defaultFormData);
   const { baseAsset, quoteAsset } = formData;
@@ -145,7 +145,7 @@ const Form_ = ({ isDarkMode }: Props) => {
             <Button
               size="large"
               icon={<UndoOutlined />}
-              disabled={baseAsset === "" || quoteAsset === ""}
+              disabled={isIdenticalObject(getPublicMarketDataDefaultValue,publicMarketData)}
               onClick={handleOnClickReset}
             >
               Reset
