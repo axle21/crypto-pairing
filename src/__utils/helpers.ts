@@ -6,15 +6,9 @@ import { ObjectType } from "./types";
  * @returns {boolean}
  */
 export const formatTimestamp = (timestamp: string): string => {
-  const date = new Date(timestamp);
-
-  const hours = date.getHours();
-  const minutes = date.getMinutes();
-  const seconds = date.getSeconds();
-
-  const formattedTime = `${hours}:${minutes}:${seconds}`;
-
-  return formattedTime;
+  const date = new Date(+timestamp * 1000);
+  const timeString = date.toLocaleTimeString();
+  return timeString;
 };
 
 /**
