@@ -14,12 +14,8 @@ import { getExchangeInfoApi } from "./__utils/apiService";
 import { isIdenticalObject } from "../../__utils/helpers";
 import { getPublicMarketApi } from "../CardContainer/__utils/apiService";
 import { getPublicMarketDataDefaultValue } from "../CardContainer/__utils/types";
-import useGetExchangeInfoData from './__utils/useCustomHook'
-
-const callPublicMarket = async (baseAsset: string, quoteAsset: string) => {
-  const res = await getPublicMarketApi(baseAsset, quoteAsset);
-  return res;
-};
+import useGetExchangeInfoDataCustomHook from './__utils/useCustomHook'
+import usePublicMarketDataCustomHook from "../../Component/CardContainer/__utils/useCustomHooks";
 
 interface Props {
   isDarkMode: boolean;
@@ -33,32 +29,8 @@ const Form_ = ({ isDarkMode }: Props) => {
   const { symbols } = data.data;
   const [formData, setFormData] = React.useState<FormType>(defaultFormData);
   const { baseAsset, quoteAsset } = formData;
-  useGetExchangeInfoData(getExchangeInfoDataDefaultValue , data, saveData, getExchangeInfoApi );
-
-
-  const handleOnFinish = async (values: FormType) => {
-    const { baseAsset, quoteAsset } = values;
-    publicMarketSaveData({
-      ...getPublicMarketDataDefaultValue,
-      isLoading: true,
-    });
-    const res = await callPublicMarket(baseAsset, quoteAsset);
-    const { status, data } = res;
-    if (status === 200) {
-      publicMarketSaveData({
-        ...getPublicMarketDataDefaultValue,
-        data: data,
-        isLoading: false,
-        isSuccess: true,
-      });
-    } else {
-      publicMarketSaveData({
-        ...getPublicMarketDataDefaultValue,
-        isLoading: false,
-        isError: true,
-      });
-    }
-  };
+  useGetExchangeInfoDataCustomHook(getExchangeInfoDataDefaultValue , data, saveData, getExchangeInfoApi );
+  const { handleOnFinish } = usePublicMarketDataCustomHook(getPublicMarketDataDefaultValue,publicMarketSaveData,getPublicMarketApi);
 
   const handleOnClickReset = () : void=> {
     setFormData(defaultFormData);

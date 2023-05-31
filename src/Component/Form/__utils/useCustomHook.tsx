@@ -2,8 +2,6 @@ import { useEffect } from "react";
 import {isIdenticalObject} from '../../../__utils/helpers'
 import {getExchangeInfoDataTypes} from './types'
 
-
-
 type GetExchangeInfoApi = () => Promise<{ status: number; data: any }>;
 
 const useCustomHook = (
