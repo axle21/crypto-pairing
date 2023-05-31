@@ -1,22 +1,17 @@
-import { useEffect } from 'react';
-import { isIdenticalObject } from '../../../__utils/helpers';
+import { useEffect } from "react";
+import {isIdenticalObject} from '../../../__utils/helpers'
 import {getExchangeInfoDataTypes} from './types'
 
 
-interface Props {
-  getExchangeInfoDataDefaultValue: getExchangeInfoDataTypes;
-  data: getExchangeInfoDataTypes;
-  saveData: (data: getExchangeInfoDataTypes) => void;
-  getExchangeInfoApi: () => Promise<any>;
 
-}
+type GetExchangeInfoApi = () => Promise<{ status: number; data: any }>;
 
-const useGetExchangeInfoData = ({
-  getExchangeInfoDataDefaultValue,
-  data,
-  saveData,
-  getExchangeInfoApi,
-}: Props): void => {
+const useCustomHook = (
+  getExchangeInfoDataDefaultValue: getExchangeInfoDataTypes,
+  data: getExchangeInfoDataTypes,
+  saveData: (data: getExchangeInfoDataTypes) => void,
+  getExchangeInfoApi: GetExchangeInfoApi
+) => {
   useEffect(() => {
     (async () => {
       if (isIdenticalObject(getExchangeInfoDataDefaultValue, data)) {
@@ -47,7 +42,12 @@ const useGetExchangeInfoData = ({
         }
       }
     })();
-  }, [data, saveData, getExchangeInfoDataDefaultValue, getExchangeInfoApi]);
-};
+  }, [
+    data,
+    saveData,
+    getExchangeInfoDataDefaultValue,
+    getExchangeInfoApi,
+  ]);
+}
 
-export default useGetExchangeInfoData;
+export default useCustomHook;

@@ -33,7 +33,7 @@ const Form_ = ({ isDarkMode }: Props) => {
   const { symbols } = data.data;
   const [formData, setFormData] = React.useState<FormType>(defaultFormData);
   const { baseAsset, quoteAsset } = formData;
-  useGetExchangeInfoData({ getExchangeInfoDataDefaultValue , data, saveData, getExchangeInfoApi });
+  useGetExchangeInfoData(getExchangeInfoDataDefaultValue , data, saveData, getExchangeInfoApi );
 
 
   const handleOnFinish = async (values: FormType) => {
@@ -59,7 +59,7 @@ const Form_ = ({ isDarkMode }: Props) => {
       });
     }
   };
-  
+
   const handleOnClickReset = () : void=> {
     setFormData(defaultFormData);
     form.resetFields(["baseAsset", "quoteAsset"]);
