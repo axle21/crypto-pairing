@@ -30,7 +30,7 @@ const Header = ({ isDarkMode, handleClickDarkMode }: Props) => {
           height="50px"
           width="50px"
         />
-        <p>Flowdesk - Examination</p>
+        <p>Crypto Pairing</p>
       </div>
       <Button
         type="dashed"
