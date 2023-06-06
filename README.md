@@ -1,4 +1,4 @@
-# flowdesk-binance-tech-exam
+# crypto-pairing
 
 Its main functionality is to Retrieve and display market data for a selected pair from Binance public API.
 
@@ -21,4 +21,4 @@ Make sure you have Node.js installed on your machine. You can download it from t
    npm run dev
    
 ### LIVE DEMO 
-[https://flowdesk-binance-tech-.vercel.app/](https://flowdesk-binance-tech-exam.vercel.app/)
+https://crypto-pairing.vercel.app/
